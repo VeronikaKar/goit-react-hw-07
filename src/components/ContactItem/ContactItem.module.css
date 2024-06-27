@@ -1,0 +1,40 @@
+item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.item:hover {
+  background-color: #f1f1f1;
+}
+
+.item p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.button__delete {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button__delete:hover {
+  background-color: #cc0000;
+}
+
+.button__delete:focus {
+  outline: none;
+}
