@@ -1,20 +1,41 @@
 import { useSelector } from "react-redux";
-import ContactItem from "../ContactItem/ContactItem";
-import { selectNameFilter } from "../../redux/filtersSlice";
-import { selectContacts } from "../../redux/contactsSlice";
-export const ContactList = () => {
-  const items = useSelector(selectContacts);
-  const { name } = useSelector(selectNameFilter);
+import { ContactItem } from "../ContactItem/ContactItem";
+import { InfinitySpin } from "react-loader-spinner";
+import {
+  selectFilteredContacts,
+  selectIsLoading,
+  selectIsError,
+} from "../../redux/contactsSlice";
 
-  const filteredContacts = items.filter((contact) =>
-    contact.name.toLowerCase().includes(name.toLowerCase())
-  );
+export const ContactList = () => {
+  const filteredContacts = useSelector(selectFilteredContacts);
+  const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectIsError);
 
   return (
-    <ul className="list-none p-0 my-5">
-      {filteredContacts.map((contact) => (
-        <ContactItem key={contact.id} contact={contact} />
-      ))}
-    </ul>
+    <>
+      <ul className="divide-y divide-gray-200 mx-auto max-w-md">
+        {filteredContacts.length > 0 ? (
+          filteredContacts.map((contact) => (
+            <ContactItem key={contact.id} contact={contact} id={contact.id} />
+          ))
+        ) : (
+          <li className="py-4 text-gray-500 text-center">No contacts found</li>
+        )}
+      </ul>
+      {loading && (
+        <div className="flex justify-center items-center h-48">
+          <InfinitySpin
+            visible={true}
+            width={80}
+            color="#EF4444" // Adjusted color for InfinitySpin
+            ariaLabel="infinity-spin-loading"
+          />
+        </div>
+      )}
+      {error && (
+        <p className="text-red-500 text-center">Error loading contacts.</p>
+      )}
+    </>
   );
 };
