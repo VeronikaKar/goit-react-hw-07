@@ -1,31 +1,29 @@
-import s from "./ContactItem.module.css";
 import { deleteContact } from "../../redux/operations.js";
 import { useDispatch } from "react-redux";
-import { ContactIcon } from "lucide-react";
-import { PhoneCallIcon } from "lucide-react";
+import { ContactIcon, PhoneCallIcon } from "lucide-react";
+import s from "./ContactItem.module.css";
+
 export const ContactItem = ({ contact: { number, name, id } }) => {
   const dispatch = useDispatch();
 
-  const handleDeleteContact = (id) => {
+  const handleDeleteContact = () => {
     dispatch(deleteContact(id));
   };
-
   return (
     <li className={s.item}>
       <div>
-        <p>
+        <p className={s.text}>
           <ContactIcon />
           {name}
         </p>
-        <p>
+        <p className={s.text}>
           <PhoneCallIcon />
           {number}
         </p>
       </div>
-
       <button
         type="button"
-        onClick={() => handleDeleteContact(id)}
+        onClick={handleDeleteContact}
         className={s.button__delete}
       >
         Delete
@@ -33,5 +31,3 @@ export const ContactItem = ({ contact: { number, name, id } }) => {
     </li>
   );
 };
-
-export default ContactItem;

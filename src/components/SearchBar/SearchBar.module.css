@@ -22,8 +22,24 @@
   outline: none;
   transition: border-color 0.3s ease;
   flex: 1;
+  position: relative;
 }
 
 .inputSearch:focus {
   border-color: #4fa94d;
+}
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.clearButton:hover {
+  color: #333;
 }
