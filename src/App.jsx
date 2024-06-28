@@ -1,7 +1,7 @@
 import { ContactList, SearchBar, ContactForm } from "components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchContacts } from "./redux/operations";
+import { fetchContacts } from "./redux/contactsOps";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {

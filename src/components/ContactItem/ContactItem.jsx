@@ -1,4 +1,4 @@
-import { deleteContact } from "../../redux/operations.js";
+import { deleteContact } from "../../redux/contactsOps.js";
 import { useDispatch } from "react-redux";
 import { ContactIcon, PhoneCallIcon } from "lucide-react";
 import s from "./ContactItem.module.css";

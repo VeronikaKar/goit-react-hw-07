@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/operations.js";
+import { addContact } from "../../redux/contactsOps.js";
 import s from "./ContactForm.module.css";
 
 const initialValues = {
